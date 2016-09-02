@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html ng-app="toDoApp">
+  <head>
+    <meta charset="utf-8">
+    <title>Projeto Final - toDoList</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="controller.js"></script>
+    <style>
+      .concluido{
+        text-decoration: line-through;
+      }
+    </style>
+
+  </head>
+  <body ng-controller="toDoController as ctrl">
+
+    <div class="container">
+      <h1 class="textoPrincipal">simple<strong>todo</strong> </h1>
+      <h2 class="subTexto"> A simple to-do list developed with vanillaJS</h2>
+      
+      <div>
+        <span>{{ctrl.salvarEditar}}</span>
+        <input ng-model="ctrl.input" ng-keyDown="ctrl.enterAction($event,ctrl.input)" class="entrada" placeholder="Insert your task here..." >
+        <!-- <button ng-click="ctrl.adicionar(ctrl.input)" ng-if="!ctrl.ativaEditar">Adicionar</button> -->
+        <button ng-click="ctrl.editar(ctrl.input)" ng-if="ctrl.ativaEditar" >Salvar</button>
+      </div>
+
+      <div>
+        <ul class="lista">
+          <li ng-repeat="todo in ctrl.listaToDo" ng-dblclick="ctrl.ativaSwipe(todo)">
+            <input type="checkbox" ng-model="todo.completo">
+            <span ng-class="{'concluido': todo.completo}" >{{todo.atividade}}</span>
+            <button ng-click="ctrl.acionaEditar(todo)" ng-if="todo.swipeTrue">Editar</button>
+            <button ng-click="ctrl.excluir(todo)" ng-if="todo.swipeTrue" >Excluir</button>
+          </li>
+        </ul>
+      </div>
+    </div>
+</body>
+</html>
