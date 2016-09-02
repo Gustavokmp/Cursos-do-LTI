@@ -1,0 +1,47 @@
+<html langn="pt-br" ng-app="Oficina">
+<head>
+	<title>Oficina Angular JS</title>
+	<link rel="stylesheet" href="..\node_modules\angular-material\angular-material.min.css">
+
+<script src="..\node_modules\angular\angular.min.js"></script>
+<script src = "..\node_modules\angular-aria\angula-aria.min.js"></script>
+<script src="..\node_modules\angular-animate.min.js"></script>
+
+
+  <!-- Angular Material Library -->
+	<style>
+	.vermelho{
+		background-color: red;
+	}
+	</style>
+</head>
+<body ng-controller="Controlador">
+
+
+
+	<md-input-container>
+        <label>Nome</label>
+        <input ng-model="pessoa.nome">
+      </md-input-container>
+      <md-input-container>
+        <label>Telefone</label>
+        <input ng-model="pessoa.telefone">
+      </md-input-container>
+      		<md-input-container>
+        <label>Filtro</label>
+        <input ng-model="filtroPesquisa">
+      </md-input-container>
+	<md-button class="md-raised md-primary" ng-click="adicionaUm()">Adicionar ou buscar</md-button>
+	<table>
+		<tr>
+			<th>nome</th>
+			<th>telefone</th>
+		</tr>
+		<tr ng-repeat="contato in contatos | filter: filtroPesquisa" ng-class="{vermelho:passou}" ng-mouseenter="passou = true" ng-mouseleave="passou = false">
+			<td>{{contato.nome}}</td>
+			<td>{{contato.telefone}}</td>
+		</tr>
+	</table>
+
+</body>
+</html>

@@ -1,0 +1,9 @@
+{
+  "name": "OficinaNode",
+  "version": "0.0.0",
+  "main": "Servidor/app.js",
+  "dependencies": {
+    "shortid": "^2.2.6"
+  },
+  "devDependecies": {}
+}
